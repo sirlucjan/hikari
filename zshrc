@@ -254,6 +254,9 @@ prompt_get_context() {
 NEWLINE=$'\n'
 PROMPT='%B%F{yellow}%n%F{nocolor} at %B%F{white}%m%F{nocolor}: %B%F{blue}%~%F{nocolor} - %B%F{yellow}%*%F{nocolor} [%h] ${NEWLINE}❯%b%f '
 
+# Theme
+alsi -l
+
 # Bindkeys
 bindkey -e
 bindkey '\e[1;5C' forward-word
