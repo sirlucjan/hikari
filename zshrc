@@ -291,6 +291,11 @@ alias watch="batwatch"
 # load zsh-syntax-highlighting
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# load fast-syntax-highlighting
+if [[ -f /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]]; then
+    source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+fi
+
 # load skim completion and keybindings
 [ -f /usr/share/skim/key-bindings.zsh ] && source /usr/share/skim/key-bindings.zsh
 [ -f /usr/share/skim/completion.zsh ] && source /usr/share/skim/completion.zsh
