@@ -5,6 +5,17 @@
 # load $HOME/.zshrc.pre to overwrite defaults
 [[ -r ${HOME}/.zshrc.pre ]] && source ${HOME}/.zshrc.pre
 
+# Colors!
+set black       = '%{\033[30m%}'
+set red         = '%{\033[31m%}'
+set green       = '%{\033[32m%}'
+set yellow      = '%{\033[33m%}'
+set blue        = '%{\033[34m%}'
+set megenta     = '%{\033[35m%}'
+set cyan        = '%{\033[36m%}'
+set white       = '%{\033[37m%}'
+set nocolor     = '%{\033[0m%}'
+
 # Colors in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
