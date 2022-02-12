@@ -25,7 +25,7 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 # protect special characters
-export LC_CTYPE="en_US.UTF-8"
+export LC_CTYPE="pl_PL.UTF-8"
 
 # Setopts
 # allow prompt substitution
