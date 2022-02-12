@@ -252,11 +252,7 @@ prompt_get_context() {
 }
 
 NEWLINE=$'\n'
-precmd() {
-    vcs_info
-    FIRST_PROMPT="%(!.%F{red}root%f.%F{green}$USER%f) %F{$prompt_color}%m%f %F{$(prompt_dir_writeable)}%~%f %* %F{$(prompt_git_dirty)}${vcs_info_msg_0_}%f %F{blue}$(prompt_get_context)%f %F{cyan}$(prompt_get_namespace)%f %(1j.%j.)"
-}
-PROMPT='$FIRST_PROMPT${NEWLINE}%(?.%F{green}.%F{red})❯%f '
+PROMPT='%B%F{yellow}%n%F{nocolor} at %B%F{white}%m%F{nocolor}: %B%F{blue}%~%F{nocolor} - %B%F{yellow}%*%F{nocolor} [%h] ${NEWLINE}❯%b%f '
 
 # Bindkeys
 bindkey -e
