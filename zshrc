@@ -275,6 +275,19 @@ bindkey '^[^?' backward-kill-dir
 bindkey '\e[1;3D' backward-half-word
 bindkey '\e[1;3C' forward-half-word
 
+# alias  
+alias su='su -'
+alias tarball='updpkgsums && mkaurball'
+alias pacman-upgrade='pacman -Fy && pacman -Syu'
+alias ls="exa"
+alias ll="exa -bghHliS"
+alias lla="exa -bghHliSa"
+alias cat="bat"
+alias man="batman"
+alias diff="batdiff"
+alias grep="batgrep"
+alias watch="batwatch"
+
 # load zsh-syntax-highlighting
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
