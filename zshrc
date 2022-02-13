@@ -252,7 +252,11 @@ prompt_get_context() {
 }
 
 NEWLINE=$'\n'
-PROMPT='%B%F{yellow}%n%F{nocolor} at %B%F{white}%m%F{nocolor}: %B%F{blue}%~%F{nocolor} - %B%F{yellow}%*%F{nocolor} [%h] ${NEWLINE}❯%b%f '
+precmd() {
+    vcs_info
+    FIRST_PROMPT="%(!.%B%F{red}root%f.%B%F{green}$USER%f) at %F{$prompt_color}%m%f %B%F{$(prompt_dir_writeable)}%~%f %* %F{$(prompt_git_dirty)}${vcs_info_msg_0_}%f %F{blue}$(prompt_get_context)%f %F{cyan}$(prompt_get_namespace)%f %(1j.%j.)"
+}
+PROMPT='$FIRST_PROMPT${NEWLINE}%(?.%F{green}.%B%F{white})❯%f '
 
 # Theme
 alsi -l
@@ -275,7 +279,7 @@ bindkey '^[^?' backward-kill-dir
 bindkey '\e[1;3D' backward-half-word
 bindkey '\e[1;3C' forward-half-word
 
-# alias  
+# alias
 alias su='su -'
 alias tarball='updpkgsums && mkaurball'
 alias pacman-upgrade='pacman -Fy && pacman -Syu'
