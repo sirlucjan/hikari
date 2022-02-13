@@ -91,7 +91,7 @@ HISTSIZE=1000000
 SAVEHIST=9000000
 HISTFILE=~/.zsh_history
 TIMEFMT="'$fg[green]%J$reset_color' time: $fg[blue]%*Es$reset_color, cpu: $fg[blue]%P$reset_color"
-REPORTTIME=10
+REPORTTIME=5
 
 # zstyles
 zstyle ':completion:*' menu select
