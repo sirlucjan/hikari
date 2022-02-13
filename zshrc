@@ -254,9 +254,9 @@ prompt_get_context() {
 NEWLINE=$'\n'
 precmd() {
     vcs_info
-    FIRST_PROMPT="%(!.%B%F{red}root%f.%B%F{green}$USER%f) at %F{$prompt_color}%m%f %B%F{$(prompt_dir_writeable)}%~%f %* %F{$(prompt_git_dirty)}${vcs_info_msg_0_}%f %F{blue}$(prompt_get_context)%f %F{cyan}$(prompt_get_namespace)%f %(1j.%j.)"
+    FIRST_PROMPT="%(!.%B%F{red}root%f.%B%F{green}$USER%f) at %B%F{$prompt_color}%m%f %B%F{$(prompt_dir_writeable)}%~%f %* %B%F{$(prompt_git_dirty)}${vcs_info_msg_0_}%f %B%F{blue}$(prompt_get_context)%f %B%F{cyan}$(prompt_get_namespace)%f %(1j.%j.)"
 }
-PROMPT='$FIRST_PROMPT${NEWLINE}%(?.%F{green}.%B%F{white})❯%f '
+PROMPT='$FIRST_PROMPT${NEWLINE}%(?.%B%F{white}.%B%F{white})❯%f '
 
 # Theme
 alsi -l
