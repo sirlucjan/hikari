@@ -304,6 +304,9 @@ alias watch="batwatch"
 # load commands autosuggestion
 [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# load zsh-you-should-use
+[ -f /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh ] && source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+
 # load skim completion and keybindings
 [ -f /usr/share/skim/key-bindings.zsh ] && source /usr/share/skim/key-bindings.zsh
 [ -f /usr/share/skim/completion.zsh ] && source /usr/share/skim/completion.zsh
