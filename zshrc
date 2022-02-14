@@ -308,5 +308,9 @@ alias watch="batwatch"
 [ -f /usr/share/skim/key-bindings.zsh ] && source /usr/share/skim/key-bindings.zsh
 [ -f /usr/share/skim/completion.zsh ] && source /usr/share/skim/completion.zsh
 
+# Bindkeys for zsh-history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 # load $HOME/.zshrc.local to overwrite this zshrc
 [[ -r ${HOME}/.zshrc.local ]] && source ${HOME}/.zshrc.local
