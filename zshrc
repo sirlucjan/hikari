@@ -294,6 +294,23 @@ alias man="batman"
 alias diff="batdiff"
 alias grep="batgrep"
 alias watch="batwatch"
+alias wttr='curl -H "Accept-Language: pl" wttr.in/Kraków'
+alias glt="gl track"
+alias glu="gl untrack"
+alias glst="gl status"
+alias gld="gl diff"
+alias glco="gl commit"
+alias glb="gl branch"
+alias glt="gl tag"
+alias glch="gl checkout"
+alias glm="gl merge"
+alias glrs="gl resolve"
+alias glf="gl fuse"
+alias glre="gl remote"
+alias glp="gl publish"
+alias glsw="gl switch"
+alias gli="gl init"
+alias glh="gl history"
 
 # load zsh-syntax-highlighting
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
