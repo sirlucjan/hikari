@@ -279,6 +279,9 @@ bindkey '^[^?' backward-kill-dir
 bindkey '\e[1;3D' backward-half-word
 bindkey '\e[1;3C' forward-half-word
 
+# load git-extras completions
+[ -f /usr/share/doc/git-extras/git-extras-completion.zsh ] && source /usr/share/doc/git-extras/git-extras-completion.zsh
+
 # alias
 alias su='su -'
 alias tarball='updpkgsums && mkaurball'
