@@ -289,6 +289,7 @@ alias pacman-upgrade='pacman -Fy && pacman -Syu'
 alias ls="exa"
 alias ll="exa -bghHliS"
 alias lla="exa -bghHliSa"
+alias llt="exa -bghHliSaT"
 alias cat="bat"
 alias man="batman"
 alias diff="batdiff"
