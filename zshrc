@@ -306,12 +306,14 @@ alias gltg="gl tag"
 alias glch="gl checkout"
 alias glm="gl merge"
 alias glrs="gl resolve"
-alias glf="gl fuse"
+alias glfu="gl fuse"
 alias glre="gl remote"
-alias glp="gl publish"
+alias glpu="gl publish"
 alias glsw="gl switch"
 alias gli="gl init"
 alias glh="gl history"
+alias glfe="gl fetch" 
+alias glpl="gl pull"
 
 # load zsh-syntax-highlighting
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
