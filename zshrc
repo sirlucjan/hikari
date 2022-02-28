@@ -316,6 +316,7 @@ alias glig="gl ignore"
 alias glfe="gl fetch"
 alias glpl="gl pull"
 alias glpa="gl patch"
+alias glrv="gl revert"
 
 # load zsh-syntax-highlighting
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
