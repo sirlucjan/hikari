@@ -259,7 +259,7 @@ precmd() {
 PROMPT='$FIRST_PROMPT${NEWLINE}%(?.%B%F{white}.%B%F{white})❯%f '
 
 # Theme
-alsi -l
+fastfetch --logo arch_small --structure Title:Separator:OS:Host:Kernel:Packages:Uptime:Shell:DE:CPU:GPU:Resolution:Disk:Memory:Break --disk-folders /:/boot:/home
 
 # Bindkeys
 bindkey -e
@@ -333,6 +333,9 @@ alias glrv='gl revert'
 
 # load zsh-you-should-use
 [ -f /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh ] && source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+
+# load zsh-autopair
+[ -f /usr/share/zsh/plugins/zsh-autopair/autopair.zsh ] && source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 
 # load skim completion and keybindings
 [ -f /usr/share/skim/key-bindings.zsh ] && source /usr/share/skim/key-bindings.zsh
