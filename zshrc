@@ -254,9 +254,9 @@ prompt_get_context() {
 NEWLINE=$'\n'
 precmd() {
     vcs_info
-    FIRST_PROMPT="%(!.%B%F{red}root%f.%B%F{green}$USER%f) at %B%F{$prompt_color}%m%f %B%F{$(prompt_dir_writeable)}%~%f %* %B%F{$(prompt_git_dirty)}${vcs_info_msg_0_}%f %B%F{blue}$(prompt_get_context)%f %B%F{cyan}$(prompt_get_namespace)%f %(1j.%j.)"
+    FIRST_PROMPT="%(!.%B%F{red}root%f.%B%F{green}$USER%f) at %B%F{$prompt_color}%m%f %B%F{$(prompt_dir_writeable)}%~%f %* %B%F{$(prompt_git_dirty)}${vcs_info_msg_0_}%f %B%F{blue}$(prompt_get_context)%f %B%F{cyan}$(prompt_get_namespace)%f %(1j.%j.)%b"
 }
-PROMPT='$FIRST_PROMPT${NEWLINE}%(?.%B%F{white}.%B%F{white})❯%f '
+PROMPT='$FIRST_PROMPT${NEWLINE}%(?.%B%F{white}.%B%F{white})❯%f%b '
 
 # Theme
 fastfetch --logo arch_small --structure Title:Separator:OS:Host:Kernel:Packages:Uptime:Shell:DE:CPU:GPU:Resolution:Disk:Memory:Break --disk-folders /:/boot:/home
