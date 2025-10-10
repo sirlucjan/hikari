@@ -258,9 +258,6 @@ precmd() {
 }
 PROMPT='$FIRST_PROMPT${NEWLINE}%(?.%B%F{white}.%B%F{white})❯%f%b '
 
-# Theme
-fastfetch --logo arch_small --structure Title:Separator:OS:Host:Kernel:Packages:Uptime:Shell:DE:CPU:GPU:Resolution:Disk:Memory:Break --disk-folders /:/boot:/home
-
 # Bindkeys
 bindkey -e
 bindkey '\e[1;5C' forward-word
