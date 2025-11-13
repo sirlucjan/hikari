@@ -281,6 +281,7 @@ bindkey '\e[1;3C' forward-half-word
 
 # alias
 alias su='su -'
+alias su-rs='su-rs -'
 alias tarball='updpkgsums && mkaurball'
 alias pacman-upgrade='pacman -Fy && pacman -Syu'
 alias pacman-downgrade='pacman -Fy && pacman -Syuu'
