@@ -5,16 +5,18 @@
 # load $HOME/.zshrc.pre to overwrite defaults
 [[ -r ${HOME}/.zshrc.pre ]] && source ${HOME}/.zshrc.pre
 
-# Colors!
-set black       = '%{\033[30m%}'
-set red         = '%{\033[31m%}'
-set green       = '%{\033[32m%}'
-set yellow      = '%{\033[33m%}'
-set blue        = '%{\033[34m%}'
-set megenta     = '%{\033[35m%}'
-set cyan        = '%{\033[36m%}'
-set white       = '%{\033[37m%}'
-set nocolor     = '%{\033[0m%}'
+# ---------------------------------------------------------------------
+# COLORS (fixed to valid zsh syntax)
+# ---------------------------------------------------------------------
+black='%{\033[30m%}'
+red='%{\033[31m%}'
+green='%{\033[32m%}'
+yellow='%{\033[33m%}'
+blue='%{\033[34m%}'
+magenta='%{\033[35m%}'
+cyan='%{\033[36m%}'
+white='%{\033[37m%}'
+nocolor='%{\033[0m%}'
 
 # man help colors and man colors replace by batman from bat-extras
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -27,7 +29,9 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 # protect special characters
 export LC_CTYPE="pl_PL.UTF-8"
 
-# Setopts
+# ---------------------------------------------------------------------
+# ZSH OPTIONS
+# ---------------------------------------------------------------------
 # allow prompt substitution
 setopt prompt_subst
 # append history list to the history file; this is the default but we make sure
@@ -81,19 +85,25 @@ setopt interactivecomments
 # Disable flowcontrol
 stty -ixon
 
-# Autoload
+# ---------------------------------------------------------------------
+# AUTOLOAD
+# ---------------------------------------------------------------------
 autoload -Uz colors && colors
 autoload -Uz vcs_info
 autoload -Uz compinit
 
-# History Settings
+# ---------------------------------------------------------------------
+# HISTORY SETTINGS
+# ---------------------------------------------------------------------
 HISTSIZE=1000000
 SAVEHIST=9000000
 HISTFILE=~/.zsh_history
 TIMEFMT="'$fg[green]%J$reset_color' time: $fg[blue]%*Es$reset_color, cpu: $fg[blue]%P$reset_color"
 REPORTTIME=5
 
-# zstyles
+# ---------------------------------------------------------------------
+# ZSTYLES
+# ---------------------------------------------------------------------
 zstyle ':completion:*' menu select
 zstyle ':vcs_info:*' enable git svn
 zstyle ':vcs_info:git*:*' get-revision true
@@ -111,7 +121,9 @@ COMPDUMPFILE=${COMPDUMPFILE:-${ZDOTDIR:-${HOME}}/.zcompdump}
 # activate completion
 compinit -d ${COMPDUMPFILE} || print 'Notice: no compinit available :('
 
-# Smart Functions
+# ---------------------------------------------------------------------
+# SMART FUNCTIONS
+# ---------------------------------------------------------------------
 # smart cd function, allows switching to /etc when running 'cd /etc/fstab'
 function cd () {
     if (( ${#argv} == 1 )) && [[ -f ${1} ]]; then
@@ -123,7 +135,9 @@ function cd () {
     fi
 }
 
-# Behaviour
+# ---------------------------------------------------------------------
+# BEHAVIOUR – custom widgets
+# ---------------------------------------------------------------------
 # custom keybindings for string operations
 toggleSingleString() {
   LBUFFER=`echo $LBUFFER | sed "s/\(.*\) /\1 '/"`
@@ -146,7 +160,7 @@ clearString() {
 }
 zle -N clearString
 
-#overwrite alt+backspace
+# overwrite alt+backspace
 backward-kill-dir () {
     local WORDCHARS='*?-[]~=&;!#$%^(){}<>|_.'
     zle backward-kill-word
@@ -183,13 +197,12 @@ zle -N insert-datestamp
 
 # get last modified file
 function get-last-modified-file () {
-	LAST_FILE=$(\ls -t1p | grep -v / | head -1)
-	LBUFFER+=${(%):-$LAST_FILE}
+    LAST_FILE=$(\ls -t1p | grep -v / | head -1)
+    LBUFFER+=${(%):-$LAST_FILE}
 }
 zle -N get-last-modified-file
 
-# jump behind the first word on the cmdline
-# useful to add options.
+# jump behind the first word on the cmdline – useful to add options.
 function jump_after_first_word () {
     local words
     words=(${(z)BUFFER})
@@ -202,16 +215,17 @@ function jump_after_first_word () {
 }
 zle -N jump_after_first_word
 
-# Custom Prompt
-
+# ---------------------------------------------------------------------
+# CUSTOM PROMPT
+# ---------------------------------------------------------------------
 if [[ ! -f ~/.zshcolor ]]; then
-	declare -a colors
-	colors=('cyan' 'green' 'yellow' 'magenta' 'red' 'blue')
-	host_hash=$(hostnamectl --static | md5sum | tr -d '[a-fA-F]' | cut -d ' ' -f 1 | head -c 5)
-	prompt_color=$colors[$((host_hash % ${#colors[@]} + 1))]
-	echo -n $prompt_color > ~/.zshcolor
+    declare -a colors
+    colors=('cyan' 'green' 'yellow' 'magenta' 'red' 'blue')
+    host_hash=$(hostnamectl --static | md5sum | tr -d '[a-fA-F]' | cut -d ' ' -f 1 | head -c 5)
+    prompt_color=$colors[$((host_hash % ${#colors[@]} + 1))]
+    echo -n $prompt_color > ~/.zshcolor
 else
-	prompt_color=$(cat ~/.zshcolor)
+    prompt_color=$(cat ~/.zshcolor)
 fi
 
 prompt_dir_writeable() {
@@ -224,7 +238,7 @@ prompt_dir_writeable() {
 
 prompt_git_dirty() {
     if ! command -v git &> /dev/null; then
-	    exit
+        exit
     fi
     if git rev-parse --git-dir > /dev/null 2>&1; then
         if [ -z "$(command git status --porcelain --ignore-submodules -unormal)" ]; then
@@ -238,17 +252,17 @@ prompt_git_dirty() {
 }
 
 prompt_get_namespace() {
-	if ! command -v kubens &> /dev/null; then
-		exit
-	fi
-	echo "$(kubens -c)"
+    if ! command -v kubens &> /dev/null; then
+        exit
+    fi
+    echo "$(kubens -c)"
 }
 
 prompt_get_context() {
-	if ! command -v kubectx &> /dev/null; then
-		exit
-	fi
-	echo "$(kubectx -c)"
+    if ! command -v kubectx &> /dev/null; then
+        exit
+    fi
+    echo "$(kubectx -c)"
 }
 
 NEWLINE=$'\n'
@@ -258,7 +272,9 @@ precmd() {
 }
 PROMPT='$FIRST_PROMPT${NEWLINE}%(?.%B%F{white}.%B%F{white})❯%f%b '
 
-# Bindkeys
+# ---------------------------------------------------------------------
+# BINDKEYS
+# ---------------------------------------------------------------------
 bindkey -e
 bindkey '\e[1;5C' forward-word
 bindkey '\e[1;5D' backward-word
@@ -277,9 +293,12 @@ bindkey '\e[1;3D' backward-half-word
 bindkey '\e[1;3C' forward-half-word
 
 # load git-extras completions
-[ -f /usr/share/doc/git-extras/git-extras-completion.zsh ] && source /usr/share/doc/git-extras/git-extras-completion.zsh
+[ -f /usr/share/doc/git-extras/git-extras-completion.zsh ] && \
+    source /usr/share/doc/git-extras/git-extras-completion.zsh
 
-# alias
+# ---------------------------------------------------------------------
+# ALIASES
+# ---------------------------------------------------------------------
 alias su='su -'
 alias su-rs='su-rs -'
 alias tarball='updpkgsums && mkaurball'
@@ -287,31 +306,51 @@ alias pacman-upgrade='pacman -Fy && pacman -Syu'
 alias pacman-downgrade='pacman -Fy && pacman -Syuu'
 alias download='pkgctl repo clone --protocol https'
 alias kde-reload='kquitapp6 plasmashell && kstart plasmashell &'
+
+# eza-based ls replacements (git-aware, icons, dirs-first)
 alias lo='eza -a --git --color=always --group-directories-first --icons=always'
+# show all files (including hidden), git status, icons; minimal view without long format
+
 alias la='eza -alh --git --total-size --color=always --group-directories-first --icons=always'
+# long listing with hidden files, human-readable sizes, total size summary, git columns
+
 alias ll='eza -lh --git --total-size --color=always --group-directories-first --icons=always'
+# long listing (no hidden), human-readable sizes, total size summary, git columns
+
 alias lt='eza -T --git --color=always --group-directories-first --icons=always'
+# tree view (no hidden), git status integrated, icons and colors
+
 alias lta='eza -aT --git --color=always --group-directories-first --icons=always'
+# tree view including hidden files, git status, icons and colors
+
 alias wttr='curl -H "Accept-Language: pl" wttr.in/Kraków'
 
+# ---------------------------------------------------------------------
+# PLUGINS
+# ---------------------------------------------------------------------
 # load fast-syntax-highlighting
-[ -f /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ] && source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+[ -f /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ] && \
+    source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # load zsh-history-substring-search
-[ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ] && source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+[ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ] && \
+    source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # load commands autosuggestion
-[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # load zsh-you-should-use
-[ -f /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh ] && source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+[ -f /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh ] && \
+    source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
 
 # load zsh-autopair
-[ -f /usr/share/zsh/plugins/zsh-autopair/autopair.zsh ] && source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
+[ -f /usr/share/zsh/plugins/zsh-autopair/autopair.zsh ] && \
+    source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 
 # load skim completion and keybindings
 [ -f /usr/share/skim/key-bindings.zsh ] && source /usr/share/skim/key-bindings.zsh
-[ -f /usr/share/skim/completion.zsh ] && source /usr/share/skim/completion.zsh
+[ -f /usr/share/skim/completion.zsh ]   && source /usr/share/skim/completion.zsh
 
 # Bindkeys for zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
