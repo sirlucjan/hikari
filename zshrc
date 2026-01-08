@@ -306,6 +306,7 @@ alias pacman-upgrade='pacman -Fy && pacman -Syu'
 alias pacman-downgrade='pacman -Fy && pacman -Syuu'
 alias download='pkgctl repo clone --protocol https'
 alias kde-reload='kquitapp6 plasmashell && kstart plasmashell &'
+alias cargo-bump='cargo upgrade --verbose && cargo update --verbose'
 
 # eza-based ls replacements (git-aware, icons, dirs-first)
 alias lo='eza -a --git --color=always --group-directories-first --icons=always'
