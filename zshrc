@@ -116,6 +116,17 @@ zstyle ':vcs_info:svn*:*' check-for-changes false
 zstyle ':vcs_info:svn*' formats "%b %m "
 zstyle ':vcs_info:svn*' actionformats "%b/%a %m "
 
+# case-insensitive matching (lowercase input matches uppercase candidates)
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# user-local completion functions (rustup, cargo tools, own #compdef files).
+# NOTE: fpath MUST be extended before compinit runs — additions made later
+# (e.g. in ~/.zshrc.local) are invisible to the completion system.
+# For anything else, extend fpath in ~/.zshrc.pre.
+[[ -d ${HOME}/.local/share/zsh/site-functions ]] && \
+    fpath=(${HOME}/.local/share/zsh/site-functions $fpath)
+[[ -d ${HOME}/.zfunc ]] && fpath=(${HOME}/.zfunc $fpath)
+
 # completion dump file
 COMPDUMPFILE=${COMPDUMPFILE:-${ZDOTDIR:-${HOME}}/.zcompdump}
 # activate completion
